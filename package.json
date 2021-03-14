@@ -5,19 +5,39 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "build-themes": "devextreme build",
+    "postinstall": "npm run build-themes"
   },
   "dependencies": {
+    "axios": "^0.20.0",
     "core-js": "^3.6.5",
-    "vue": "^2.6.11"
+    "devextreme": "20.1-stable",
+    "devextreme-vue": "20.1-stable",
+    "moment": "^2.29.1",
+    "node-sass": "^4.11.0",
+    "number-formatter": "^1.2.0",
+    "vue": "^2.6.11",
+    "vue-class-component": "^7.2.3",
+    "vue-property-decorator": "^8.4.2",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.5.1"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.33.0",
+    "@typescript-eslint/parser": "^2.33.0",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-typescript": "^4.5.8",
     "@vue/cli-service": "~4.5.0",
+    "@vue/eslint-config-typescript": "^5.0.2",
     "babel-eslint": "^10.1.0",
+    "devextreme-cli": "1.2.3",
+    "devextreme-themebuilder": "20.1-stable",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "sass-loader": "^7.1.0",
+    "typescript": "~3.9.3",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
@@ -27,10 +47,11 @@
     },
     "extends": [
       "plugin:vue/essential",
-      "eslint:recommended"
+      "eslint:recommended",
+      "@vue/typescript"
     ],
     "parserOptions": {
-      "parser": "babel-eslint"
+      "parser": "@typescript-eslint/parser"
     },
     "rules": {}
   },

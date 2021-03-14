@@ -105,23 +105,6 @@ body {
 }
 
 iframe img {
-  width: 10%;
-}
-
-.transition {
-  transition: all 0.3s ease-in;
-}
-
-table {
-  text-align: center;
-}
-
-.subframe {
-  height: 65vh;
-  width: 70vw;
-}
-
-.subframe img {
   width: 100%;
 }
 </style>
