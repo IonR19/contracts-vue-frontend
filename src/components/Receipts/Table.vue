@@ -2,8 +2,8 @@
   <div>
     <h4 class="text-center mb-5">الفواتير</h4>
     <table class="table table-striped">
-      <table-head :titles="titles"></table-head>
-      <table-body></table-body>
+      <TableHead :titles="titles"></TableHead>
+      <TableBody></TableBody>
     </table>
   </div>
 </template>

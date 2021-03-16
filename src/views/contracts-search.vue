@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div class="card shadow p-4 my-4 mx-3 rtl">
+    <div class="card shadow p-4 my-4 mx-3">
       <SearchForm></SearchForm>
     </div>
-    <div class="card shadow p-4 my-4 mx-3 rtl">
+    <div class="card shadow p-4 my-4 mx-3">
       <AppTable></AppTable>
     </div>
     <transition>

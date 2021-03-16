@@ -65,6 +65,13 @@ export default {
 </script>
 
 <style lang="scss">
+.rtl {
+  direction: rtl;
+}
+.ltr {
+  direction: ltr;
+}
+
 .v- {
   &enter-from,
   &leave-to {

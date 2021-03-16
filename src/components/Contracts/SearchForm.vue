@@ -24,7 +24,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="input-group mt-3 col rtl">
+      <div class="input-group mt-3 col">
         <div class="form-check form-switch col-2 my-2">
           <input class="form-check-input" type="checkbox" id="endDate Before" v-model.lazy="endDateSwh" />
           <label class="form-check-label" for="endDateBefore">{{ endDateSwitch }}</label>
@@ -33,7 +33,7 @@
         <input type="date" name="endDate" id="endDate" class="form-control" v-model="endDate" />
         <label for="endDate" class="input-group-text">تاريخ النهاية</label>
       </div>
-      <div class="input-group mt-3 col rtl">
+      <div class="input-group mt-3 col">
         <div class="form-check form-switch col-2 my-2">
           <input class="form-check-input" type="checkbox" id="startDateBefore" v-model.lazy="startDateSwh" />
           <label class="form-check-label" for="startDateBefore">{{ startDateSwitch }}</label>
@@ -53,12 +53,6 @@
 import Vue from 'vue'
 import { mapGetters } from 'vuex'
 export default Vue.extend({
-  mounted() {
-    // this.$refs['search-form'].addEventListener('submit', this.submitForm)
-  },
-  beforeDestroy() {
-    // this.$refs['search-form'].removeEventListener('submit', this.submitForm)
-  },
   data() {
     return {
       company: undefined,
@@ -84,7 +78,7 @@ export default Vue.extend({
     ...mapGetters('contracts', ['isGettingData']),
   },
   methods: {
-    submitForm() {
+    submitForm(e: Event) {
       const searchParams = {}
       ;[
         'contractName',
@@ -107,5 +101,3 @@ export default Vue.extend({
   },
 })
 </script>
-
-<style lang="scss" scoped></style>

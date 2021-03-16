@@ -3,14 +3,14 @@
     <div class="card shadow p-4 my-4 mx-3">
       <p v-if="isGettingData">Loading Data ...</p>
       <p v-else-if="!record">No Report Found! Or Incorrect URL</p>
-      <form-table v-else> </form-table>
+      <FormTable v-else> </FormTable>
     </div>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-import formTable from '../components/ContractsFormGroupUpdate'
+import FormTable from '../components/ContractsFormGroupUpdate'
 
 export default {
   watch: {
@@ -33,7 +33,7 @@ export default {
     },
   },
   components: {
-    formTable,
+    FormTable,
   },
 }
 </script>

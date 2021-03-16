@@ -12,7 +12,7 @@
       <FileAttatchment />
     </div>
     <div class="card p-4 shadow m-4" v-if="records && record">
-      <receipt-table />
+      <ReceiptTable />
     </div>
     <transition>
       <ReceiptModal v-if="popupIsOn" @request-close="closePopup">
@@ -25,7 +25,7 @@
       </ReceiptModal>
     </transition>
     <transition>
-      <receipt-modal v-if="display" @request-close="closeDisplay" :msg="selectedReceipt">
+      <ReceiptModal v-if="display" @request-close="closeDisplay" :msg="selectedReceipt">
         <template #body>
           <div v-if="isGettingFile">
             <h2>Loading File...</h2>
@@ -41,7 +41,7 @@
             <h2>Error</h2>
           </div>
         </template>
-      </receipt-modal>
+      </ReceiptModal>
     </transition>
   </div>
 </template>

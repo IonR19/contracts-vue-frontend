@@ -67,7 +67,7 @@
       </div>
       <div class="row mt-3">
         <div class="input-group">
-          <label for="payment" class="input-group-text"><i class="fas fa-sort-numeric-up-alt"></i></label>
+          <label for="payment" class="input-group-text"><i class="fas fa-sort-numeric-down-alt"></i></label>
           <input
             required
             minlength="3"
@@ -80,9 +80,21 @@
           <label for="payment" class="input-group-text">القيمة المالية</label>
         </div>
       </div>
-      <button class="btn btn-primary mt-5 col-2 offset-5" :disabled="isUpdatingData">
-        {{ saveButtonText }}
-      </button>
+      <div class="row mt-3">
+        <div class="input-group">
+          <label for="notes" class="input-group-text">
+            <i class="fas fa-align-left"></i>
+          </label>
+          <textarea class="form-control" name="notes" id="notes" cols="30" rows="10" data-id="notes"></textarea>
+          <label for="notes" class="input-group-text">ملاحظات</label>
+        </div>
+      </div>
+      <input
+        type="submit"
+        class="btn btn-primary mt-5 col-2 offset-5"
+        :disabled="isUpdatingData"
+        :value="saveButtonText"
+      >
     </form>
     <div v-if="updateStatus" class="row">
       <h2 class="h2 text-center">{{ updateStatus }}</h2>
@@ -98,6 +110,12 @@ import moment from 'moment'
 export default Vue.extend({
   mounted() {
     this.initPage()
+    let inputs: (HTMLInputElement | HTMLTextAreaElement)[] = [
+      ...this.$refs['contractUpdateForm'].querySelectorAll('input, textarea'),
+    ]
+    inputs.forEach(inp => {
+      inp.style.direction = 'rtl'
+    })
   },
   data() {
     return {
@@ -111,6 +129,7 @@ export default Vue.extend({
     }
   },
   computed: {
+    ...mapGetters('contracts', ['record', 'isGettingData', 'isUpdatingData']),
     searchPage() {
       return `/${this.record?.isOrder ? 'orders' : 'contracts'}/search`
     },
@@ -120,12 +139,12 @@ export default Vue.extend({
     id() {
       return this.$route.params.id
     },
-    ...mapGetters('contracts', ['record', 'isGettingData', 'isUpdatingData']),
   },
   methods: {
     initPage() {
+      //sets page data
       const form = this.$refs['contractUpdateForm'] as HTMLFormElement
-      const inputs = form.querySelectorAll('input')
+      const inputs = form.querySelectorAll('input, textarea') as NodeListOf<HTMLInputElement | HTMLTextAreaElement>
       inputs.forEach(input => {
         const dbName = input.dataset.id
         if (input.getAttribute('type') === 'date') {
@@ -137,14 +156,15 @@ export default Vue.extend({
         }
       })
     },
-    async submitForm() {
-      const form = this.$refs['contractUpdateForm'] as HTMLFormElement
-      const inputs = form.querySelectorAll('input')
+    async submitForm(e: any) {
       const updateObj = {}
-      inputs.forEach(input => {
-        updateObj[input.dataset.id] = input.value
+      e.target.elements.forEach((item: HTMLInputElement) => {
+        if (item.name) {
+          const { name, value } = item
+          updateObj[name] = value
+        }
       })
-      this.updateStatus = ''
+
       const res = await this.$store.dispatch('contracts/updateRecord', { id: this.id, param: updateObj })
       this.updateStatus = res === 'ok' ? 'تم الحفظ' : res
     },

@@ -9,7 +9,13 @@
       </h5>
       <div class="cell-break"></div>
     </div>
-    <div>
+    <div class="cell-container">
+      <h2 class="cell-title">ملاحظات</h2>
+      <p class="cell-value h3 text-right d-flex justify-content-center align-items-center">{{ record['notes'] }}</p>
+    </div>
+    <div class="cell-break"></div>
+    <div class="cell-break"></div>
+    <div class="ltr">
       <button class="btn btn-primary" @click="addReceipt">إضافة فاتورة</button>
     </div>
   </div>
@@ -49,17 +55,17 @@ export default Vue.extend({
   &-container {
     display: flex;
     flex-flow: wrap;
+    align-self: stretch;
   }
   &-title {
     flex: 0 0 20%;
-    order: 2;
+    display: flex;
+    align-items: center;
   }
   &-value {
     flex: 1 0 80%;
-    order: 1;
   }
   &-break {
-    order: 3;
     flex: 1 0 100%;
     height: 1px;
     margin-top: 0.5rem;
