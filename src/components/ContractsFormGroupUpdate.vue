@@ -89,12 +89,7 @@
           <label for="notes" class="input-group-text">ملاحظات</label>
         </div>
       </div>
-      <input
-        type="submit"
-        class="btn btn-primary mt-5 col-2 offset-5"
-        :disabled="isUpdatingData"
-        :value="saveButtonText"
-      >
+      <button class="btn btn-primary mt-5 col-2 offset-5" :disabled="isUpdatingData">{{ saveButtonText }}</button>
     </form>
     <div v-if="updateStatus" class="row">
       <h2 class="h2 text-center">{{ updateStatus }}</h2>
@@ -133,11 +128,11 @@ export default Vue.extend({
     searchPage() {
       return `/${this.record?.isOrder ? 'orders' : 'contracts'}/search`
     },
-    saveButtonText() {
-      return this.isUpdatingData ? 'جاري الحفظ...' : 'حفظ'
-    },
     id() {
       return this.$route.params.id
+    },
+    saveButtonText() {
+      return (this.isUpdatingData) ? 'جاري الحفظ...' : 'حفظ'
     },
   },
   methods: {
